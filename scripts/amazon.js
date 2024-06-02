@@ -2,7 +2,11 @@
 // Storing the information of the product in an object
 // This structures the data or say organizes the data , We can call it as data structure, Here we can call it as Data Structure which represents the list of data
 
+// By generating HTML with JavaScript we do not need to write code again and again, We just need to add new data in the object and it will be added to our webpage
 
+
+// We can add data like given below
+/*
 const products = [
     
     {
@@ -29,14 +33,28 @@ const products = [
         count: 56 
     },
     price: 1495
+    },
+    {
+        image: 'images/products/black-2-slot-toaster.jpg',
+    name: '2 Slot Toaster - Black',
+    rating: {
+        stars:5,
+        count: 1996
+    },
+    price: 2549.
     }
 
-
     ];
+*/
 
 
-    // Consider we are having a lot of data so writing it again and again will not be appropriate and not feasible so we will loop through the array 
-    // Basically we are generalizing
+// We can add the product one by one like we did in the above code but it will increase the size of the code, so to make code look clean , I made a seperate file "(product.js)" where all the details of products or say all the data is stored so we can import that file to get the objects 
+
+
+
+
+// Consider we are having a lot of data so writing it again and again will not be appropriate and not feasible so we will loop through the array 
+// Basically we are generalizing
 
 
     let productsHTML ='';
@@ -63,7 +81,7 @@ const products = [
                     </div>
 
                     <div class="product-price">
-                        INR${products.price}
+                        INR ${products.price}
                     </div>
 
                     <div class="product-quantity-container">
