@@ -1,8 +1,9 @@
-import{cart} from '../cart/cart.js';
+import{cart, addToCart} from '../cart/cart.js';
 // We are importing the cart.js file here
 // ../cart/cart.js, Here, '..' is used to get out from the current folder and then (/cart/cart.js)write the path were the actual file is there which we want to import
 
 import {products} from '../scripts/products-data.js';
+
 
 
 
@@ -131,47 +132,35 @@ const products = [
 
     document.querySelector('.js-products-grid').innerHTML = productsHTML;
 
+    // We have imported addToCart function  
+ 
+    function updateCartQuantity(){
+        let cartQuantity = 0;
+        cart.forEach((cartItem)=>{
+            cartQuantity += cartItem.quantity;
+        });
 
+
+        // Calculate total number of item and diplay in HTML cart whenever item is added to cart
+        document.querySelector('.js-cart-quantity').innerHTML = cartQuantity;
+
+    }
     // To add items to the Cart whenever we click on 'Add to Cart' button
     // To keep code clean all cart related code is written in 'cart.js' file
     document.querySelectorAll('.js-add-to-cart').forEach((button) => {
         button.addEventListener('click', () =>{
             // dataset attribute give all the data that is attach to the button
             // It will act like a object so to access it will can use object property
+
             const productId=button.dataset.productId;
-            // Keep in mind that whenever we want to use data attribute, Here in this step word will chnage from kebeb-case to camel-case means  products-id -> productId
+
+            // Keep in mind that whenever we want to use data attribute, Here in this above step as written word will change from kebeb-case to camel-case (products-id -> productId)
+
+            addToCart(productId); // To see if the item is already present in the cart or not
+  
+            updateCartQuantity();
 
 
+        });
 
-            // To see if the item is already present in the cart..if item is already present then it will increment by one and if not the item will be added to the cart
-            let matchingItem;
-            cart.forEach((item)=>{
-                if(productId===item.productId){
-                    matchingItem=item;
-                }
-            });
-
-            if(matchingItem){
-                matchingItem.quantity +=1;
-            }else{
-                cart.push({
-                    productId: productId,
-                    quantity: 1
-                });
-
-            }
- 
-
-
-            let cartQuantity = 0;
-            cart.forEach((item)=>{
-                cartQuantity += item.quantity;
-            });
-
-
-
-
-            // Calculate total number of item and diplay in HTML cart whenever item is added to cart
-            document.querySelector('.js-cart-quantity').innerHTML = cartQuantity;
-        } );
     });
