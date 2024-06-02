@@ -106,13 +106,54 @@ const products = [
                         Added
                     </div>
 
-                    <button class="add-to-cart-button button-primary">
+
+                
+                    <button class="add-to-cart-button button-primary js-add-to-cart" data-product-id="${products.id}">
                         Add to Cart
                     </button>
             </div>`;
            
     });
 
-    console.log(productsHTML);
+    // data-product-name="${products.name}, We wrote this to add data attribute....To add data attirbute just add 'data-' in front of any name
+
+
+    // Data attribute is used to attch any information to an element
+
+    // Here we attach the information of the product name so that whenever we click on 'Add to Cart'  button we will get the name and will know which product should be added to cart
 
     document.querySelector('.js-products-grid').innerHTML = productsHTML;
+
+
+    // To add items to the Cart whenever we click on 'Add to Cart' button
+    // To keep code clean all cart related code is written in 'cart.js' file
+    document.querySelectorAll('.js-add-to-cart').forEach((button) => {
+        button.addEventListener('click', () =>{
+            // dataset attribute give all the data that is attach to the button
+            // It will act like a object so to access it will can use object property
+            const productId=button.dataset.productId;
+            // Keep in mind that whenever we want to use data attribute, Here in this step word will chnage from kebeb-case to camel-case means  products-id -> productId
+
+
+
+            // To see if the item is already present in the cart..if item is already present then it will increment by one and if not the item will be added to the cart
+            let matchingItem;
+            cart.forEach((item)=>{
+                if(productId===item.productId){
+                    matchingItem=item;
+                }
+            });
+
+            if(matchingItem){
+                matchingItem.quantity +=1;
+            }else{
+                cart.push({
+                    productId: productId,
+                    quantity: 1
+                });
+
+            }
+ 
+            console.log(cart)
+        } );
+    });
