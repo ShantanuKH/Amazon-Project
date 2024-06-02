@@ -1,4 +1,4 @@
-export const cart=[{
+export let cart=[{
     // Here we are using a technique called normalizing the data means with the peoductId itself we can get other information abot the product
     productId:
     'e43638ce-6aa0-4b85-b27f-e1d07eb678c6',
@@ -37,3 +37,20 @@ export function addToCart(productId){
 }
 
 
+
+
+// This is a function in which we will remove all the id's which does not match our selected Id.
+
+export function removeFromCart(productId){
+    const newCart =[];
+
+    cart.forEach((cartItem)=>{
+        if(cartItem.productId!== productId){
+            newCart.push(cartItem);
+        }
+    });
+
+
+    cart = newCart;
+
+};
