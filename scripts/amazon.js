@@ -1,3 +1,10 @@
+import{cart} from '../cart/cart.js';
+// We are importing the cart.js file here
+// ../cart/cart.js, Here, '..' is used to get out from the current folder and then (/cart/cart.js)write the path were the actual file is there which we want to import
+
+
+
+
 
 // Storing the information of the product in an object
 // This structures the data or say organizes the data , We can call it as data structure, Here we can call it as Data Structure which represents the list of data
