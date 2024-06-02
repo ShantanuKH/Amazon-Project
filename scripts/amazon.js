@@ -154,6 +154,17 @@ const products = [
 
             }
  
-            console.log(cart)
+
+
+            let cartQuantity = 0;
+            cart.forEach((item)=>{
+                cartQuantity += item.quantity;
+            });
+
+
+
+
+            // Calculate total number of item and diplay in HTML cart whenever item is added to cart
+            document.querySelector('.js-cart-quantity').innerHTML = cartQuantity;
         } );
     });
