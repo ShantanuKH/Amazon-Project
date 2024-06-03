@@ -85,11 +85,16 @@
     </div>
 
 
+    <!-- We used DayJS external library to calculate the delivery date -->
+    <!-- <Script src="https://unpkg.com/dayjs@1.11.10/dayjs.min.js "></Script> -->
+    <!-- It creates the function dayjs -->
+    <!-- We can use script<> to load the external library but this may create a naming conflict so better to use it in a module -->
+    <!-- Will load ESM verison of the DayJS external library use in module -->
+    <!-- Go to 'checkout.js' file to see how to import DayJS external library in module -->
+
 
     <!-- type="module" attribute let's file get variable out of other files. -->
-  
     <script type="module" src="scripts/checkout.js"></script>
-
     <!-- More Explaination of why did we use module here is given in amazon.html file -->
 
   </body>
