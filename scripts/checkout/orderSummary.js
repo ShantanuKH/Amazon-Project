@@ -1,10 +1,10 @@
 import {cart, removeFromCart, updateDeliveryOption } from '../../cart/cart.js';
-import{products} from '../../scripts/products-data.js';
+import{products, getProduct} from '../../scripts/products-data.js';
 
 // Here we are importing ESM DayJS external library
 import dayjs from 'https://unpkg.com/dayjs@1.11.10/esm/index.js';
 
-import {deliveryOptions} from '../../cart/deliveryOptions.js'
+import {deliveryOptions, getDeliveryOption} from '../../cart/deliveryOptions.js'
 
 
 // Working with ESM DayJS external library
@@ -26,13 +26,9 @@ export function renderOrderSummary(){
 
         const productId=cartItem.productId;
 
-    let matchingProduct;
+    const matchingProduct = getProduct(productId);
 
-    products.forEach((product)=>{
-        if(product.id === productId){
-            matchingProduct=product;
-        }
-    });
+
 
 
     const deliveryOptionId = cartItem.deliveryOptionId;
@@ -40,12 +36,7 @@ export function renderOrderSummary(){
 
 
 
-    let deliveryOption;
-    deliveryOptions.forEach((option) => {
-        if (option.id === deliveryOptionId){
-            deliveryOption = option;
-        }
-    });
+    const deliveryOption = getDeliveryOption(deliveryOptionId);
 
                 const today = dayjs();
                 const deliveryDate = today.add(
