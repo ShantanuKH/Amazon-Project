@@ -1,4 +1,4 @@
-import {cart, removeFromCart } from '../cart/cart.js';
+import {cart, removeFromCart, updateDeliveryOption } from '../cart/cart.js';
 import{products} from '../scripts/products-data.js';
 
 // Here we are importing ESM DayJS external library
@@ -42,14 +42,14 @@ deliveryOptions.forEach((option) => {
     }
 });
 
-    const today = dayjs();
-        const deliveryDate = today.add(
-            deliveryOption.deliveryDays,
-            'days'
-        );
-        const dateString =  deliveryDate.format(
-            'dddd, MMMM D'
-        );
+            const today = dayjs();
+            const deliveryDate = today.add(
+                deliveryOption.deliveryDays,
+                'days'
+            );
+            const dateString =  deliveryDate.format(
+                'dddd, MMMM D'
+            );
 
 
 
@@ -120,7 +120,9 @@ function deliveryOptionsHTML(matchingProduct, cartItem){
 
      html+=
 
-        `<div class="delivery-option">
+        `<div class="delivery-option js-delivery-option"
+        data-product-id="${matchingProduct.id}"
+        data-delivery-option-id="${deliveryOption.id}">
                 <input type="radio"
                 ${isChecked ? 'checked': '' }
                 class="delivery-option-input"
@@ -154,4 +156,11 @@ document.querySelectorAll('.js-delete-link').forEach((link)=>{
            
         });
 
+});
+
+document.querySelectorAll('.js-delivery-option').forEach((element)=>{
+    element.addEventListener('click', ()=>{
+        const{productId, deliveryOptionId} = element.dataset;
+        updateDeliveryOption(productId, deliveryOptionId);
+    });
 });

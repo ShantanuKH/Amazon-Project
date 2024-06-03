@@ -1,5 +1,3 @@
-
-
 //Local storage give string so we want to convert it to get the array of data, So we used JSON.parse
 export let cart=JSON.parse(localStorage.getItem('cart'));
 
@@ -40,6 +38,7 @@ function saveToStorage(){
 export function addToCart(productId){
     // To see if the item is already present in the cart..if item is already present then it will increment by one and if not the item will be added to the cart
     let matchingItem;
+     
     cart.forEach((cartItem)=>{
         if(productId===cartItem.productId){
             matchingItem=cartItem;
@@ -79,3 +78,19 @@ export function removeFromCart(productId){
     saveToStorage();
 
 };
+
+
+// To update the deliveryOptionId and to update the page so that it should match the date on the top with the selected deliveryOptionId
+
+export function updateDeliveryOption(productId, deliveryOptionId ){
+    let matchingItem;
+    cart.forEach((cartItem)=>{
+        if(productId===cartItem.productId){
+            matchingItem=cartItem;
+        }
+    });
+
+    matchingItem.deliveryOptionId = deliveryOptionId;
+
+    saveToStorage();
+}
