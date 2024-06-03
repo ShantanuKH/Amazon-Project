@@ -3,7 +3,6 @@ import { getProduct } from '../products-data.js';
 import { getDeliveryOption } from '../../cart/deliveryOptions.js';
 
 
-
 // Considering initial cost/amount as 0 Rs
 let productPrice = 0;
 let shippingPrice = 0;
@@ -36,11 +35,6 @@ export function renderPaymentSummary(){
     const totalPrice = parseFloat(totalBeforeTax) + parseFloat(tax); // limit the decimal places to 2 and convert back to number
     
     
-
-
- 
-
-
 
     const paymentSummaryHTML =
     
@@ -85,4 +79,8 @@ export function renderPaymentSummary(){
      document.querySelector('.js-payment-summary').innerHTML = paymentSummaryHTML;
 
 
-}
+};
+
+
+
+

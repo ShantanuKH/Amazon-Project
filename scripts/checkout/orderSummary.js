@@ -1,18 +1,9 @@
 import {cart, removeFromCart, updateDeliveryOption } from '../../cart/cart.js';
 import{products, getProduct} from '../../scripts/products-data.js';
-
 // Here we are importing ESM DayJS external library
 import dayjs from 'https://unpkg.com/dayjs@1.11.10/esm/index.js';
-
 import {deliveryOptions, getDeliveryOption} from '../../cart/deliveryOptions.js'
-
-
-// Working with ESM DayJS external library
-// To understand DayJS read 'DayJS external library' documentation
-const today = dayjs();
-const deliveryDate = today.add(7, 'days');
-console.log(deliveryDate.format('dddd, MMMM D')  );  // dddd->day, MMMM->Month, D->date
-
+import {renderPaymentSummary} from './paymentSummary.js';
 
 
 
@@ -144,15 +135,22 @@ export function renderOrderSummary(){
             link.addEventListener('click', ()=>{
                 const productId = link.dataset.productId;
                 removeFromCart (productId);
+                
 
             const container =  document.querySelector(`.js-cart-item-container-${productId}`
             );
             
             container.remove();
+            renderPaymentSummary();
+            // location.reload();  // Refresh the page after an item is deleted
+           
             
             });
 
     });
+    
+
+    
 
     document.querySelectorAll('.js-delivery-option').forEach((element)=>{
         element.addEventListener('click', ()=>{
@@ -160,10 +158,14 @@ export function renderOrderSummary(){
             updateDeliveryOption(productId, deliveryOptionId);
             
 
-            // We afunction calls itself it is called as recursion and here we are using recursion
-            renderOrderSummary();
-        });
+                // We afunction calls itself it is called as recursion and here we are using recursion   
+                renderOrderSummary();
+                renderPaymentSummary();
+                // location.reload();
+        }); 
     });
+
+   
 
 }    
 
