@@ -91,6 +91,17 @@ class Clothing extends Product{
   }
 
 
+/*
+   // This is example of built in class
+    const date = new Date(); 
+    console.log(date);
+
+  Information about 'this'
+  1)Arrow function do not change the value of 'this'
+  2)Inside a function 'this' is undefined, But we can change the value of this using .call
+
+*/
+
 export const products = [
   {
     id: "e43638ce-6aa0-4b85-b27f-e1d07eb678c6",
