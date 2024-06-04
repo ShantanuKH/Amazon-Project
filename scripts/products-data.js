@@ -44,7 +44,51 @@ class Product {
         return `INR ${this.price}`;
       }
 
+
+      extraInfoHTML(){
+        return '';
+      }
+
 }
+
+
+//  extraInfoHTML() -> This is method overriding in th code as we are using it in the parent class as well as in the child class
+
+
+
+
+
+
+
+
+
+// Here, We are using Inheritance
+
+// This is how inheritance is implemented in the code
+class Clothing extends Product{
+  // Product id the parent class and Clothing is the child class
+
+
+  // The below code is use to add something more specific in child class, something else which is not present in the parent class
+  // Example :- sizeChartLink is not present in parent class but we added in the child class
+
+
+  sizeChartLink;
+  constructor(productDetails){
+    
+    super(productDetails);  /* This is property of inheritance that is used to call the whole constructor of the parent class other wise we would have to all one by one like  this.id = productDetails.id; this.image=productDetails.image; etc. */
+    
+    this.sizeChartLink = productDetails.sizeChartLink;
+  }
+
+  // This function creates the HTML on page and display the Size chart link on the page below specific type "clothing"
+    extraInfoHTML(){
+      return `
+        <a href="${this.sizeChartLink}" target="_blank">
+          Size chart
+        </a>`;  // target="_blank -> This tells browser to open link in new tab
+    }
+  }
 
 
 export const products = [
@@ -707,6 +751,11 @@ export const products = [
     ]
   }
 ].map((productDetails)=>{
+
+  if(productDetails.type === 'clothing'){
+    return new Clothing(productDetails);
+  }
+
   return new Product(productDetails);
 });
 
