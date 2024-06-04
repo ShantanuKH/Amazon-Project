@@ -15,19 +15,19 @@ class Cart {
 
     // This is how we add property to the class
     cartItems;
-    localStorageKey;
+    #localStorageKey;
 
     constructor(localStorageKey){
 
         // 'this' points to the object that we generate
-        this.localStorageKey = localStorageKey;
-        this.loadFromStorage();
+        this.#localStorageKey = localStorageKey;
+        this.#loadFromStorage();
     }
 
 
-
-    loadFromStorage(){
-            this.cartItems=JSON.parse(localStorage.getItem(this.localStorageKey));
+    // Here, We are making private method
+    #loadFromStorage(){
+            this.cartItems=JSON.parse(localStorage.getItem(this.#localStorageKey)); // # in front is called private property
             // If cart doesnt exist, We are giving the default value
                 if(!this.cartItems){
                     this.cartItems=[{
@@ -47,7 +47,7 @@ class Cart {
         }
 
     saveToStorage(){
-        localStorage.setItem(this.localStorageKey, JSON.stringify(this.cartItems));
+        localStorage.setItem(this.#localStorageKey, JSON.stringify(this.cartItems));
 
 }
 
@@ -141,8 +141,6 @@ console.log(businessCart);
 // Class is basically an object generator
 
 console.log(businessCart instanceof Cart);
-
-
 
 
 
