@@ -1,8 +1,13 @@
 //Local storage give string so we want to convert it to get the array of data, So we used JSON.parse
-export let cart=JSON.parse(localStorage.getItem('cart'));
+export let cart; 
+
+
+loadFromStorage();
 
 
 
+export function loadFromStorage(){
+    cart=JSON.parse(localStorage.getItem('cart'));
 // If cart doesnt exist, We are giving the default value
 if(!cart){
     cart=[{
@@ -20,6 +25,7 @@ if(!cart){
     
     ];
 
+}
 }
 
 
