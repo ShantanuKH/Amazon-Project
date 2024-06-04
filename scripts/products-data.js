@@ -12,6 +12,40 @@ export function getProduct(productId){
 
 
 
+// Instead of using object here, We are converting objects into class for the ease of code
+
+
+class Product {
+
+  // We are defining the properties as undefined initially
+
+
+      id;                     //This means id = indefined;
+      image;
+      name;
+      rating;
+      price;
+
+
+      constructor(productDetails){
+        this.id = productDetails.id;
+        this.image=productDetails.image;
+        this.name=productDetails.name;
+        this.rating=productDetails.rating;
+        this.price=productDetails.price;
+      }
+
+      getStarUrl(){
+       return `images/ratings/rating-${this.rating.stars * 10}.png`;
+      }
+
+
+      getPrice(){
+        return `INR ${this.price}`;
+      }
+
+}
+
 
 export const products = [
   {
@@ -672,4 +706,9 @@ export const products = [
       "mens"
     ]
   }
-];
+].map((productDetails)=>{
+  return new Product(productDetails);
+});
+
+// map() loops through array and for each value it runs a function
+// It creates new array and whatever we derived from map is saved in that array
