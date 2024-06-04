@@ -3,14 +3,19 @@ import { getProduct } from '../products-data.js';
 import { getDeliveryOption } from '../../cart/deliveryOptions.js';
 
 
-// Considering initial cost/amount as 0 Rs
-let productPrice = 0;
-let shippingPrice = 0;
+
 
 
 // We wrote this function to get the total amount of the items
 // We first get the product by productId and then multiply the price and quantity of the product to get the total price of the product
 export function renderPaymentSummary(){
+
+
+    // Considering initial cost/amount as 0 Rs
+    let productPrice = 0;
+    let shippingPrice = 0;
+
+
     cart.forEach((cartItem) =>{
         const product = getProduct(cartItem.productId);
         productPrice += product.price * cartItem.quantity

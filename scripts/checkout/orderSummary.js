@@ -8,7 +8,7 @@ import {renderPaymentSummary} from './paymentSummary.js';
 
 
 
-// We wrote this function to update the page as soon as any event happend, There should not be any need of refreshing the page
+// We wrote this function so that we can use it to update the page as soon as any event happend, There should not be any need of refreshing the page
 export function renderOrderSummary(){
 
     let cartSummaryHTML ='';
@@ -142,7 +142,7 @@ export function renderOrderSummary(){
             
             container.remove();
             renderPaymentSummary();
-            // location.reload();  // Refresh the page after an item is deleted
+            
            
             
             });
@@ -158,15 +158,16 @@ export function renderOrderSummary(){
             updateDeliveryOption(productId, deliveryOptionId);
             
 
-                // We afunction calls itself it is called as recursion and here we are using recursion   
+                // When function calls itself it is called as recursion and here we are using recursion   
                 renderOrderSummary();
+
+                
                 renderPaymentSummary();
-                // location.reload();
+                
         }); 
     });
 
    
-
 }    
 
 
