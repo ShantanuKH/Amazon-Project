@@ -163,7 +163,5 @@ export function renderOrderSummary(){
         }); 
     });
 
-   
 }    
-
 

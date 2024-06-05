@@ -50,7 +50,7 @@ export function renderPaymentSummary(){
         </div>
 
         <div class="payment-summary-row">
-            <div>Items (3):</div>
+            <div>Total price:</div>
             <div class="payment-summary-money">INR ${productpriceCents}</div>
         </div>
 
