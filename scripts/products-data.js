@@ -794,6 +794,63 @@ export const products = [
 export let products = [];
 
 
+// Better way to make http request than callback
+// fetch() uses promise instead of callback to wait for the response
+export function loadProductFetch(){
+
+  const promise = fetch(
+    'https://supersimplebackend.dev/products'
+    ).then((response)=>{
+    return response.json();    // This gives data to the attached to the response....json() is asynchronous
+    // This also does JSON.parse (converts string to objects) for use which we have to do in callbacks
+
+  }).then((productsData)=>{
+    // The data we are getting is in the string format so we have to convert it back to objects
+
+    // By using map here we are converting objects into class 
+    products = productsData.map((productDetails)=>{
+
+      if(productDetails.type === 'clothing'){
+        return new Clothing(productDetails);
+      }
+    
+      return new Product(productDetails);
+    });
+    
+    // map() loops through array and for each value it runs a function
+    // It creates new array and whatever we derived from map is saved in that array
+
+
+    console.log('load products');
+
+
+    // In amazon.js file we are giving the loadProduct() function to load the response and then display otherwise we would have to wait for the response, Which will need a lot of time and our page will still display nothing so far we used this.
+    // Basically we are waiting for the response to comeback and then run the code
+    // fun();
+  });
+
+
+  return promise;
+
+
+};
+
+
+
+
+/*
+      loadProductFetch().then(()=>{
+      console.log('next');
+
+});
+*/
+
+
+
+
+
+
+
 export function loadProducts(fun){
 
   // To make request to backend
@@ -803,7 +860,7 @@ export function loadProducts(fun){
   // xhr when send request it will need time to get the response as xhr is a asynchrounous code, means it does not wait for the above code to complete and run the below code as soon as is typed and so we are giving an eventListener to increase the waiting period and get the result after the response 
   xhr.addEventListener('load', ()=>{
 
-    // The data we are getting is in the string format so we have to convert it back to objects
+    // The data we are getting is in the string format so we have to convert it back to objects and we used JSON.parse() for the same
 
     // By using map here we are converting objects into class 
      products = JSON.parse(xhr.response).map((productDetails)=>{

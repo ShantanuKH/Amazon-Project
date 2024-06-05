@@ -3,7 +3,7 @@ import {loadFromStorage, cart} from "../../cart/cart.js";
 
 // The test case is failing (We got to know from jasmine test) because renderorderSummary needs to load the products from backend but we are not loading 
 // So for that we need to import loadProducts()
-import { loadProducts } from "../../scripts/products-data.js";
+import { loadProducts, loadProductFetch } from "../../scripts/products-data.js";
 
 
 
@@ -23,14 +23,13 @@ import { loadProducts } from "../../scripts/products-data.js";
         const productId2='15b6fc6f-327a-4ec4-896f-486349e85a3d';
 
 
-    // This is hook provided by Jamine
+    // This is hook provided by Jasmine
     beforeAll((done)=>{
-        loadProducts(()=>{
-
-            // Same issue that this is asynchronous function so it doesn't wait for the response
+        loadProductFetch().then(()=>{
+              // Same issue that this is asynchronous function so it doesn't wait for the response
             //And for that jasmine provide done(); function
             done();  // done() allows us to control when to go to the next step
-            }); 
+            });
         });
 
 

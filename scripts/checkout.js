@@ -2,11 +2,46 @@ import { renderOrderSummary } from "./checkout/orderSummary.js";
 import { renderPaymentSummary } from "./checkout/paymentSummary.js";
 // import '../cart/cart-class.js';
 // import '../backend/backend-practice.js';
-import { loadProducts } from "./products-data.js";
+import { loadProducts, loadProductFetch } from "./products-data.js";
 
 import { loadCart } from "../cart/cart.js";
 
 
+
+// We are using fetch() in product.js instead of call back, So modified version of the code in checkout.js is here
+
+Promise.all([
+    loadProductFetch(),   
+        new Promise((resolve)=>{        
+            loadCart(()=>{                     
+                resolve();
+            });
+        })  
+    ]).then(()=>{
+        renderOrderSummary();                 
+        renderPaymentSummary();
+        // This renderOrderSummary(); and renderPaymentSummary(); will be stored in the parameter 'fun' of loadProduct which is in product-data.js file so that these function will be called after loading the response and we do not have to wait for the response
+
+    });
+    
+
+
+
+
+
+
+
+
+
+
+
+// To know more about Promises,Read the explaination given below why we used promise instead of callbacks 
+
+
+
+
+
+/*
 
 // To  run both (loadProducts() and loadCart() ) at the same time JavaScript Provides a function called 'Promise.all();' , This let us run multiple promises at a same time
 
@@ -33,11 +68,7 @@ Promise.all([
 
     });
     
-
-
-
-
-// To know more about Promises,Read the explaination given below, why we used promise instead of callbacks 
+*/
 
 
 
