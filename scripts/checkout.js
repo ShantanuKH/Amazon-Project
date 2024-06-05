@@ -8,6 +8,45 @@ import { loadCart } from "../cart/cart.js";
 
 
 
+
+// We use 'async' so that we can use the function 'await' and by doing so we can reduce the size of the code and make our code look cleaner
+
+async function loadPage(){
+
+    await loadProductFetch();
+
+    await new Promise((resolve)=>{        
+        loadCart(()=>{                     
+            resolve();
+        });
+    });
+
+
+    renderOrderSummary();                 
+    renderPaymentSummary();
+}
+loadPage();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Here we use Promises
+
+/*
+
 // We are using fetch() in product.js instead of call back, So modified version of the code in checkout.js is here
 
 Promise.all([
@@ -25,21 +64,13 @@ Promise.all([
     });
     
 
-
-
-
-
-
+*/
 
 
 
 
 
 // To know more about Promises,Read the explaination given below why we used promise instead of callbacks 
-
-
-
-
 
 /*
 
@@ -71,7 +102,7 @@ Promise.all([
 */
 
 
-
+// Here we use callbacks
 
 /*
 
