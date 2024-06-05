@@ -1,6 +1,7 @@
 import {cart} from '../../cart/cart.js'
 import { getProduct } from '../products-data.js';
 import { getDeliveryOption } from '../../cart/deliveryOptions.js';
+import { addOrder } from '../../cart/orders.js';
 
 
 
@@ -73,7 +74,7 @@ export function renderPaymentSummary(){
             <div class="payment-summary-money">INR ${totalpriceCents}</div>
         </div>
 
-        <button class="place-order-button button-primary">
+        <button class="place-order-button button-primary js-place-order">
             Place your order
         </button>
             
@@ -82,6 +83,48 @@ export function renderPaymentSummary(){
 
 
      document.querySelector('.js-payment-summary').innerHTML = paymentSummaryHTML;
+
+
+
+
+
+
+    //  Important to understand to know how real website works
+
+    //  On clicking 'Place your order'    
+    //  By implementing the below code, We will get the order object from the backend
+
+    // This will send the request to the backend to create the and then backend will send the data to our computer
+     document.querySelector('.js-place-order').addEventListener('click', async()=>{
+
+        try{
+
+            const response = await fetch('https://supersimplebackend.dev/orders', {
+                method:'POST',
+                headers: //headers give backend more information about our request
+                {                
+                    'Content-Type': 'application/json' 
+                },
+    
+                // We have to convert the object into string as we are sending data to the server, So we used JSON.stringify
+                body: JSON.stringify(
+                {
+                    cart: cart
+                })
+            });
+    
+            // To get the data which is attach to the response we need to use response.json(), response.json() is also a promise so we can use await 
+            const order = await response.json();
+            addOrder(order);
+
+        }
+        catch(error){
+            console.log('Unexpected Error. Try again later')
+        }
+
+        window.location.href = 'orders.html'  // This changes the URL of the page to 'order.html' whenever we click on the 'Place your order' Button
+
+     });
 
 
 };
