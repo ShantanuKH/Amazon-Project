@@ -827,6 +827,10 @@ export function loadProductFetch(){
     // In amazon.js file we are giving the loadProduct() function to load the response and then display otherwise we would have to wait for the response, Which will need a lot of time and our page will still display nothing so far we used this.
     // Basically we are waiting for the response to comeback and then run the code
     // fun();
+  }).catch(()=>{
+    // Error Handling
+    console.log('Unexpected Error!. Please try again later.')
+
   });
 
 
@@ -884,7 +888,12 @@ export function loadProducts(fun){
     fun();
   });
   
+ // Error Handling
+ xhr.addEventListener('error', ()=>{
+  console.log('Unexpected Error. Please try again later');
+});
 
+ 
 
   // To setup the request
   xhr.open('GET', 'https://supersimplebackend.dev/products')

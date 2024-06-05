@@ -11,16 +11,31 @@ import { loadCart } from "../cart/cart.js";
 
 // We use 'async' so that we can use the function 'await' and by doing so we can reduce the size of the code and make our code look cleaner
 
+/*
+// Error handling in async
+try{
+
+}catch{
+
+}
+*/
+
 async function loadPage(){
+    try{
 
-    await loadProductFetch();
+        // throw 'error1'; -> these are used to throw exception willingly/manually, It will skip the below code and directly go to catch block
 
-    await new Promise((resolve)=>{        
-        loadCart(()=>{                     
-            resolve();
+        await loadProductFetch();
+
+       const value =  await new Promise((resolve, reject)=>{        
+            loadCart(()=>{                     
+                resolve('value3');
+                // reject('error2'); reject is used inside promises to throw error in the future, Wec can say that after the function runs
+            });
         });
-    });
-
+    } catch(error) {
+        console.log('Unexpected Error. Please try again later');
+    }
 
     renderOrderSummary();                 
     renderPaymentSummary();
