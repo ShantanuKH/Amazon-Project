@@ -1,21 +1,38 @@
 import { renderOrderSummary } from "../../scripts/checkout/orderSummary.js";
 import {loadFromStorage, cart} from "../../cart/cart.js";
 
+// The test case is failing (We got to know from jasmine test) because renderorderSummary needs to load the products from backend but we are not loading 
+// So for that we need to import loadProducts()
+import { loadProducts } from "../../scripts/products-data.js";
+
+
 
 // Integrated Testing 
 /* Here, We will test 
 
- 1) How the page looks
- 2) How the page behaves
+1) How the page looks
+2) How the page behaves
 
 */
 
 
-describe('test suite: renderOrderSummary', ()=>{
+    describe('test suite: renderOrderSummary', ()=>{
 
 
-    const productId1='e43638ce-6aa0-4b85-b27f-e1d07eb678c6';
-    const productId2='15b6fc6f-327a-4ec4-896f-486349e85a3d';
+        const productId1='e43638ce-6aa0-4b85-b27f-e1d07eb678c6';
+        const productId2='15b6fc6f-327a-4ec4-896f-486349e85a3d';
+
+
+    // This is hook provided by Jamine
+    beforeAll((done)=>{
+        loadProducts(()=>{
+
+            // Same issue that this is asynchronous function so it doesn't wait for the response
+            //And for that jasmine provide done(); function
+            done();  // done() allows us to control when to go to the next step
+            }); 
+        });
+
 
 
 
@@ -125,8 +142,8 @@ describe('test suite: renderOrderSummary', ()=>{
          // We are giving this html as a empty string when we have completed the testing as when we render the orderSummary on the page its taking a lot of space above resulting it push the test results at the bottom so we are giving html as a empty string
 
 
-       afterEach(()=>{
-                   
+            afterEach(()=>{
+                
                     document.querySelector('.js-test-container').innerHTML='';
         });
 

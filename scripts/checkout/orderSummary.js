@@ -7,7 +7,6 @@ import {renderPaymentSummary} from './paymentSummary.js';
 
 
 
-
 // We wrote this function so that we can use it to update the page as soon as any event happend, There should not be any need of refreshing the page
 export function renderOrderSummary(){
 
@@ -19,13 +18,7 @@ export function renderOrderSummary(){
 
     const matchingProduct = getProduct(productId);
 
-
-
-
     const deliveryOptionId = cartItem.deliveryOptionId;
-
-
-
 
     const deliveryOption = getDeliveryOption(deliveryOptionId);
 
