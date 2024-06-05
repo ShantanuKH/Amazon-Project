@@ -7,37 +7,37 @@ import { getDeliveryOption } from '../../cart/deliveryOptions.js';
 
 
 // We wrote this function to get the total amount of the items
-// We first get the product by productId and then multiply the price and quantity of the product to get the total price of the product
+// We first get the product by productId and then multiply the priceCents and quantity of the product to get the total priceCents of the product
 export function renderPaymentSummary(){
 
 
     // Considering initial cost/amount as 0 Rs
-    let productPrice = 0;
-    let shippingPrice = 0;
+    let productpriceCents = 0;
+    let shippingpriceCents = 0;
 
 
     cart.forEach((cartItem) =>{
         const product = getProduct(cartItem.productId);
-        productPrice += product.price * cartItem.quantity
+        productpriceCents += product.priceCents * cartItem.quantity
 
 
         // Now we will calculate the shipping cost
         const deliveryOption = getDeliveryOption(cartItem.deliveryOptionId);
-        shippingPrice += deliveryOption.price;
+        shippingpriceCents += deliveryOption.priceCents;
 
     });
 
 
 
-    // Total amount before tax is productPrice + shippingPrice
-    const totalBeforeTax = productPrice + shippingPrice ;
+    // Total amount before tax is productpriceCents + shippingpriceCents
+    const totalBeforeTax = productpriceCents + shippingpriceCents ;
 
  // Total tax is 10% so 10/100 => 0.1, We can multiply by 0.1 to calculate the 10% tax
     let tax = totalBeforeTax * 0.1;
     tax = tax.toFixed(2); // limit the decimal places to 2
 
-    // Total price of the cart will be totalBeforeTax + tax
-    const totalPrice = parseFloat(totalBeforeTax) + parseFloat(tax); // limit the decimal places to 2 and convert back to number
+    // Total priceCents of the cart will be totalBeforeTax + tax
+    const totalpriceCents = parseFloat(totalBeforeTax) + parseFloat(tax); // limit the decimal places to 2 and convert back to number
     
     
 
@@ -50,12 +50,12 @@ export function renderPaymentSummary(){
 
         <div class="payment-summary-row">
             <div>Items (3):</div>
-            <div class="payment-summary-money">INR ${productPrice}</div>
+            <div class="payment-summary-money">INR ${productpriceCents}</div>
         </div>
 
         <div class="payment-summary-row">
             <div>Shipping &amp; handling:</div>
-            <div class="payment-summary-money">INR ${shippingPrice}</div>
+            <div class="payment-summary-money">INR ${shippingpriceCents}</div>
         </div>
 
         <div class="payment-summary-row subtotal-row">
@@ -70,7 +70,7 @@ export function renderPaymentSummary(){
 
         <div class="payment-summary-row total-row">
             <div>Order total:</div>
-            <div class="payment-summary-money">INR ${totalPrice}</div>
+            <div class="payment-summary-money">INR ${totalpriceCents}</div>
         </div>
 
         <button class="place-order-button button-primary">

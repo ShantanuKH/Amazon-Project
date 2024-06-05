@@ -24,7 +24,7 @@ class Product {
       image;
       name;
       rating;
-      price;
+      priceCents;
 
 
       constructor(productDetails){
@@ -32,7 +32,7 @@ class Product {
         this.image=productDetails.image;
         this.name=productDetails.name;
         this.rating=productDetails.rating;
-        this.price=productDetails.price;
+        this.priceCents=productDetails.priceCents;
       }
 
       getStarUrl(){
@@ -40,8 +40,8 @@ class Product {
       }
 
 
-      getPrice(){
-        return `INR ${this.price}`;
+      getpriceCents(){
+        return `INR ${this.priceCents}`;
       }
 
 
@@ -102,6 +102,14 @@ class Clothing extends Product{
 
 */
 
+
+
+
+/* 
+
+For proffesional look to the project instead of loading the products from the file itself in the computer we will load it from the backend, The below method is to load the products or say the data from the system itself
+
+
 export const products = [
   {
     id: "e43638ce-6aa0-4b85-b27f-e1d07eb678c6",
@@ -111,7 +119,7 @@ export const products = [
       stars: 4.5,
       count: 87
     },
-    price: 1090,
+    priceCents: 1090,
     keywords: [
       "socks",
       "sports",
@@ -126,7 +134,7 @@ export const products = [
       stars: 4,
       count: 127
     },
-    price: 2095,
+    priceCents: 2095,
     keywords: [
       "sports",
       "basketballs"
@@ -140,7 +148,7 @@ export const products = [
       stars: 4.5,
       count: 56
     },
-    price: 799,
+    priceCents: 799,
     keywords: [
       "tshirts",
       "apparel",
@@ -157,7 +165,7 @@ export const products = [
       stars: 5,
       count: 2197
     },
-    price: 1899,
+    priceCents: 1899,
     keywords: [
       "toaster",
       "kitchen",
@@ -172,7 +180,7 @@ export const products = [
       stars: 4,
       count: 37
     },
-    price: 2067,
+    priceCents: 2067,
     keywords: [
       "plates",
       "kitchen",
@@ -187,7 +195,7 @@ export const products = [
       stars: 4.5,
       count: 175
     },
-    price: 3499,
+    priceCents: 3499,
     keywords: [
       "kitchen",
       "cookware"
@@ -201,7 +209,7 @@ export const products = [
       stars: 4.5,
       count: 317
     },
-    price: 2400,
+    priceCents: 2400,
     keywords: [
       "hoodies",
       "sweaters",
@@ -216,7 +224,7 @@ export const products = [
       stars: 4.5,
       count: 144
     },
-    price: 3599,
+    priceCents: 3599,
     keywords: [
       "bathroom",
       "washroom",
@@ -233,7 +241,7 @@ export const products = [
       stars: 4.5,
       count: 305
     },
-    price: 2899,
+    priceCents: 2899,
     keywords: [
       "bathroom",
       "cleaning"
@@ -247,7 +255,7 @@ export const products = [
       stars: 4,
       count: 89
     },
-    price: 3390,
+    priceCents: 3390,
     keywords: [
       "shoes",
       "running shoes",
@@ -262,7 +270,7 @@ export const products = [
       stars: 4.5,
       count: 235
     },
-    price: 2070,
+    priceCents: 2070,
     keywords: [
       "robe",
       "swimsuit",
@@ -281,7 +289,7 @@ export const products = [
       stars: 4.5,
       count: 30
     },
-    price: 1560,
+    priceCents: 1560,
     keywords: [
       "accessories",
       "shades"
@@ -295,7 +303,7 @@ export const products = [
       stars: 4.5,
       count: 562
     },
-    price: 2499,
+    priceCents: 2499,
     keywords: [
       "footwear",
       "sandals",
@@ -312,7 +320,7 @@ export const products = [
       stars: 4.5,
       count: 232
     },
-    price: 4599,
+    priceCents: 4599,
     keywords: [
       "bedroom",
       "curtains",
@@ -327,7 +335,7 @@ export const products = [
       stars: 4,
       count: 160
     },
-    price: 1699,
+    priceCents: 1699,
     keywords: [
       "shorts",
       "apparel",
@@ -342,7 +350,7 @@ export const products = [
       stars: 5,
       count: 846
     },
-    price: 3074,
+    priceCents: 3074,
     keywords: [
       "water boiler",
       "appliances",
@@ -357,7 +365,7 @@ export const products = [
       stars: 4,
       count: 99
     },
-    price: 2374,
+    priceCents: 2374,
     keywords: [
       "kleenex",
       "tissues",
@@ -374,7 +382,7 @@ export const products = [
       stars: 4,
       count: 215
     },
-    price: 2200,
+    priceCents: 2200,
     keywords: [
       "hats",
       "straw hats",
@@ -390,7 +398,7 @@ export const products = [
       stars: 4.5,
       count: 52
     },
-    price: 1799,
+    priceCents: 1799,
     keywords: [
       "jewelry",
       "accessories",
@@ -405,7 +413,7 @@ export const products = [
       stars: 4.5,
       count: 2465
     },
-    price: 1374,
+    priceCents: 1374,
     keywords: [
       "hooded",
       "hoodies",
@@ -424,7 +432,7 @@ export const products = [
       stars: 4.5,
       count: 119
     },
-    price: 1250,
+    priceCents: 1250,
     keywords: [
       "bathmat",
       "bathroom",
@@ -439,7 +447,7 @@ export const products = [
       stars: 4,
       count: 326
     },
-    price: 2640,
+    priceCents: 2640,
     keywords: [
       "shoes",
       "flats",
@@ -455,7 +463,7 @@ export const products = [
       stars: 4.5,
       count: 2556
     },
-    price: 1599,
+    priceCents: 1599,
     keywords: [
       "tshirts",
       "shirts",
@@ -473,7 +481,7 @@ export const products = [
       stars: 4.5,
       count: 2286
     },
-    price: 8300,
+    priceCents: 8300,
     keywords: [
       "garbage",
       "bins",
@@ -489,7 +497,7 @@ export const products = [
       stars: 4,
       count: 456
     },
-    price: 2399,
+    priceCents: 2399,
     keywords: [
       "bedroom",
       "bed sheets",
@@ -506,7 +514,7 @@ export const products = [
       stars: 5,
       count: 83
     },
-    price: 1250,
+    priceCents: 1250,
     keywords: [
       "hats",
       "winter hats",
@@ -524,7 +532,7 @@ export const products = [
       stars: 4.5,
       count: 9017
     },
-    price: 2290,
+    priceCents: 2290,
     keywords: [
       "pants",
       "apparel",
@@ -539,7 +547,7 @@ export const products = [
       stars: 4,
       count: 229
     },
-    price: 3890,
+    priceCents: 3890,
     keywords: [
       "shoes",
       "running shoes",
@@ -555,7 +563,7 @@ export const products = [
       stars: 3.5,
       count: 42
     },
-    price: 1690,
+    priceCents: 1690,
     keywords: [
       "sunglasses",
       "glasses",
@@ -571,7 +579,7 @@ export const products = [
       stars: 4.5,
       count: 511
     },
-    price: 6797,
+    priceCents: 6797,
     keywords: [
       "cooking set",
       "kitchen"
@@ -585,7 +593,7 @@ export const products = [
       stars: 4.5,
       count: 130
     },
-    price: 1649,
+    priceCents: 1649,
     keywords: [
       "bathroom",
       "washroom",
@@ -601,7 +609,7 @@ export const products = [
       stars: 4.5,
       count: 248
     },
-    price: 2400,
+    priceCents: 2400,
     keywords: [
       "pants",
       "sweatpants",
@@ -618,7 +626,7 @@ export const products = [
       stars: 4.5,
       count: 117
     },
-    price: 2400,
+    priceCents: 2400,
     keywords: [
       "accessories",
       "womens"
@@ -632,7 +640,7 @@ export const products = [
       stars: 4,
       count: 126
     },
-    price: 2899,
+    priceCents: 2899,
     keywords: [
       "boxes",
       "food containers",
@@ -647,7 +655,7 @@ export const products = [
       stars: 4.5,
       count: 1211
     },
-    price: 2250,
+    priceCents: 2250,
     keywords: [
       "coffeemakers",
       "kitchen",
@@ -662,7 +670,7 @@ export const products = [
       stars: 4.5,
       count: 363
     },
-    price: 3099,
+    priceCents: 3099,
     keywords: [
       "bedroom",
       "home"
@@ -676,7 +684,7 @@ export const products = [
       stars: 4.5,
       count: 93
     },
-    price: 2110,
+    priceCents: 2110,
     keywords: [
       "bathroom",
       "home",
@@ -691,7 +699,7 @@ export const products = [
       stars: 4,
       count: 89
     },
-    price: 3390,
+    priceCents: 3390,
     keywords: [
       "shoes",
       "running shoes",
@@ -707,7 +715,7 @@ export const products = [
       stars: 4,
       count: 3
     },
-    price: 10747,
+    priceCents: 10747,
     keywords: [
       "food blenders",
       "kitchen",
@@ -722,7 +730,7 @@ export const products = [
       stars: 5,
       count: 679
     },
-    price: 3899,
+    priceCents: 3899,
     keywords: [
       "mixing bowls",
       "baking",
@@ -738,7 +746,7 @@ export const products = [
       stars: 4.5,
       count: 1045
     },
-    price: 5799,
+    priceCents: 5799,
     keywords: [
       "kitchen",
       "kitchen towels",
@@ -753,7 +761,7 @@ export const products = [
       stars: 4.5,
       count: 3157
     },
-    price: 2400,
+    priceCents: 2400,
     keywords: [
       "sweaters",
       "hoodies",
@@ -772,3 +780,58 @@ export const products = [
 
 // map() loops through array and for each value it runs a function
 // It creates new array and whatever we derived from map is saved in that array
+
+
+*/
+
+
+
+
+
+// We will load data from backend
+
+
+export let products = [];
+
+
+export function loadProducts(fun){
+
+  // To make request to backend
+  const xhr = new XMLHttpRequest();
+
+
+  // xhr when send request it will need time to get the response as xhr is a asynchrounous code, means it does not wait for the above code to complete and run the below code as soon as is typed and so we are giving an eventListener to increase the waiting period and get the result after the response 
+  xhr.addEventListener('load', ()=>{
+
+    // The data we are getting is in the string format so we have to convert it back to objects
+
+    // By using map here we are converting objects into class 
+     products = JSON.parse(xhr.response).map((productDetails)=>{
+
+      if(productDetails.type === 'clothing'){
+        return new Clothing(productDetails);
+      }
+    
+      return new Product(productDetails);
+    });
+    
+    // map() loops through array and for each value it runs a function
+    // It creates new array and whatever we derived from map is saved in that array
+
+
+    console.log('load products');
+
+
+    // In amazon.js file we are giving the loadProduct() function to load the response and then display otherwise we would have to wait for the response, Which will need a lot of time and our page will still display nothing so far we used this.
+    // Basically we are waiting for the response to comeback and then run the code
+    fun();
+  });
+  
+
+
+  // To setup the request
+  xhr.open('GET', 'https://supersimplebackend.dev/products')
+  xhr.send();
+}
+
+
