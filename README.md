@@ -47,7 +47,7 @@ I developed a feature-rich e-commerce website using HTML, CSS, and JavaScript, d
 
 
 ## Code Documentation
-To make the code more understandable, I have included detailed comments throughout the codebase. These comments explain the purpose and functionality of various sections of the code, making it easier for others to read and maintain.
+To make the code more understandable, I have included detailed comments throughout the codebase. These comments explain the purpose and functionality of various sections of the code, making it easier for others to read and maintain.I have also provided some extra information about the concepts which are used.
 
 
 
