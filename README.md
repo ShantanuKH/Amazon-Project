@@ -38,11 +38,11 @@ I developed a feature-rich e-commerce website using HTML, CSS, and JavaScript, d
 ## Screenshots
 
 
-<img src="https://github.com/ShantanuKH/Amazon-Project/blob/0748c6257e6bc062074bebfed19d2305c6864c96/SS/amazon1.png" alt="Home" width="500"/> <img src="https://github.com/ShantanuKH/Amazon-Project/blob/0748c6257e6bc062074bebfed19d2305c6864c96/SS/amazon2.png" alt="Home" width="500"/> 
+<img src="https://github.com/ShantanuKH/Amazon-Project/blob/0748c6257e6bc062074bebfed19d2305c6864c96/SS/amazon1.png" alt="Home" width="400"/> <img src="https://github.com/ShantanuKH/Amazon-Project/blob/0748c6257e6bc062074bebfed19d2305c6864c96/SS/amazon2.png" alt="Home" width="400"/> 
 
-<img src="https://github.com/ShantanuKH/Amazon-Project/blob/0748c6257e6bc062074bebfed19d2305c6864c96/SS/amzon3.png" alt="Checkout" width="500"/> <img src="https://github.com/ShantanuKH/Amazon-Project/blob/0748c6257e6bc062074bebfed19d2305c6864c96/SS/amazon4.png" alt="Checkout" width="500"/> 
+<img src="https://github.com/ShantanuKH/Amazon-Project/blob/0748c6257e6bc062074bebfed19d2305c6864c96/SS/amzon3.png" alt="Checkout" width="400"/> <img src="https://github.com/ShantanuKH/Amazon-Project/blob/0748c6257e6bc062074bebfed19d2305c6864c96/SS/amazon4.png" alt="Checkout" width="400"/> 
 
-<img src="https://github.com/ShantanuKH/Amazon-Project/blob/0748c6257e6bc062074bebfed19d2305c6864c96/SS/amazon5.png" alt="Orders" width="500"/> <img src="https://github.com/ShantanuKH/Amazon-Project/blob/0748c6257e6bc062074bebfed19d2305c6864c96/SS/amazon6.png" alt="Tracking" width="500"/> 
+<img src="https://github.com/ShantanuKH/Amazon-Project/blob/0748c6257e6bc062074bebfed19d2305c6864c96/SS/amazon5.png" alt="Orders" width="400"/> <img src="https://github.com/ShantanuKH/Amazon-Project/blob/0748c6257e6bc062074bebfed19d2305c6864c96/SS/amazon6.png" alt="Tracking" width="400"/> 
 
 
 
